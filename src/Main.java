@@ -12,10 +12,8 @@ public class Main {
         String description = input.nextLine();
 
         Task task = new Task();
-        task.setId(1L);
         task.setTitle(title);
         task.setDescription(description);
-        task.setStatus(Status.STATUS_PENDING);
 
         taskManager.addTask(task);
     }

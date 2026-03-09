@@ -16,6 +16,8 @@ public class TaskManager {
     }
 
     public void addTask(Task task) {
+        task.setId((long) tasks.size());
+        task.setStatus(Status.STATUS_PENDING);
         tasks.add(task);
     }
 
@@ -32,4 +34,9 @@ public class TaskManager {
             System.out.println(task);
         }
     }
+
+    public void deleteTask(Long id) {
+        tasks.removeIf(task -> task.getId().equals(id));
+    }
+
 }
