@@ -1,6 +1,5 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
@@ -31,5 +30,31 @@ public class FileManager {
         }
     }
 
+    public List<Task> loadTasks() {
+        List<Task> tasks = new ArrayList<>();
+        File file = new File(fileName);
+
+        if (!file.exists()) {
+            System.out.println("File does not exist");
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 4) {
+                    Task task = new Task();
+                    task.setId(Long.parseLong(parts[0]));
+                    task.setTitle(parts[1]);
+                    task.setDescription(parts[2]);
+                    task.setStatus(Status.valueOf(parts[3]));
+                    tasks.add(task);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error while reading file: " + e.getMessage());
+        }
+        return tasks;
+    }
 
 }
