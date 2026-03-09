@@ -26,4 +26,10 @@ public class TaskManager {
             }
         }
     }
+
+    public void listTasks() {
+        for (Task task : tasks) {
+            System.out.println(task);
+        }
+    }
 }
