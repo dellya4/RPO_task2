@@ -42,4 +42,8 @@ public class Task {
     public String toString() {
         return "id = " + id + ", title = " + title + ", description = " + description + ", status = " + status;
     }
+
+    public String toFileString() {
+        return id + ";" + title + ";" + description + ";" + status;
+    }
 }
