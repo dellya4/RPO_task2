@@ -36,6 +36,7 @@ public class FileManager {
 
         if (!file.exists()) {
             System.out.println("File does not exist");
+            return tasks;
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
