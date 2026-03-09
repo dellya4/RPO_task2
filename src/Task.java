@@ -40,10 +40,10 @@ public class Task {
 
     @Override
     public String toString() {
-        return "id = " + id + ", title = " + title + ", description = " + description + ", status = " + status;
+        return "id = " + getId() + ", title = " + getTitle() + ", description = " + getDescription() + ", status = " + getStatus();
     }
 
     public String toFileString() {
-        return id + ";" + title + ";" + description + ";" + status;
+        return getId() + ";" + getTitle() + ";" + getDescription() + ";" + getStatus();
     }
 }
