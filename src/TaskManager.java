@@ -16,7 +16,7 @@ public class TaskManager {
     }
 
     public void addTask(Task task) {
-        task.setId((long) tasks.size());
+        task.setId((long) tasks.size()+1);
         task.setStatus(Status.STATUS_PENDING);
         tasks.add(task);
     }
