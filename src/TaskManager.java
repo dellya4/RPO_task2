@@ -15,10 +15,15 @@ public class TaskManager {
         return tasks;
     }
 
-    public void addTasks(Task new_task) {
-        tasks.add(new_task);
+    public void addTask(Task task) {
+        tasks.add(task);
     }
 
-    public void completedTask(Task task) {
+    public void completedTask(Long id) {
+        for (Task task : tasks) {
+            if (task.getId().equals(id)) {
+                task.setStatus(Status.STATUS_COMPLETED);
+            }
+        }
     }
 }

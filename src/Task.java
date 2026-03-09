@@ -1,10 +1,8 @@
-
-
 public class Task {
     private Long id;
-    private String Title;
-    private String Description;
-    private Status Status;
+    private String title;
+    private String description;
+    private Status status;
 
     public Task() {}
 
@@ -17,31 +15,31 @@ public class Task {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public Status getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(Status status) {
-        Status = status;
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "id = " + id + ", title = " + Title + ", description = " + Description + ", status = " + Status;
+        return "id = " + id + ", title = " + title + ", description = " + description + ", status = " + status;
     }
 }
