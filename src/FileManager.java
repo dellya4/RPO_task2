@@ -2,24 +2,20 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles saving and loading tasks to and from a CSV file.
+ */
 public class FileManager {
-
     private String fileName;
 
     public FileManager(String fileName) {
         this.fileName = fileName;
     }
 
-    public FileManager() {}
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
+    /**
+     * Saves the list of tasks to the specified file.
+     * @param tasks The list of tasks to save.
+     */
     public void saveTasks(List<Task> tasks) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             for (Task task : tasks) {
@@ -30,16 +26,19 @@ public class FileManager {
         }
     }
 
+    /**
+     * Loads tasks from the specified file.
+     * @return A list of tasks read from the file.
+     */
     public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
         File file = new File(fileName);
 
         if (!file.exists()) {
-            System.out.println("File does not exist");
-            return tasks;
+            return tasks; // It's normal for the file not to exist on first run
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
@@ -52,10 +51,9 @@ public class FileManager {
                     tasks.add(task);
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | IllegalArgumentException e) {
             System.out.println("Error while reading file: " + e.getMessage());
         }
         return tasks;
     }
-
 }
